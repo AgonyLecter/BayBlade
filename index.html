@@ -403,7 +403,7 @@ function draw(dt){
  const intro=ph===1?.28*Math.pow(Math.max(0,1-(now-phT)/3200),2):0;zoom*=Math.pow(.02,dt);flash*=Math.pow(.0005,dt);shake*=Math.pow(.001,dt);
  const s=Math.min(W,H)/(2*R+110)*(1+zoom+intro);
  cx.translate(W/2+(Math.random()-.5)*shake,H/2+(Math.random()-.5)*shake);cx.scale(s,s);
- cx.drawImage(AR,-ARh,-ARh,2*ARh,2*ARh);cx.setLineDash([14,18]);cx.lineDashOffset=-now/60;cx.strokeStyle='rgba(120,200,255,.16)';cx.lineWidth=2;cx.beginPath();cx.arc(0,0,R*.55,0,7);cx.stroke();cx.setLineDash([]);cx.lineCap='round';cx.lineWidth=10;
+ cx.drawImage(AR,-ARh,-ARh,2*ARh,2*ARh);cx.setLineDash([14,18]);cx.lineDashOffset=-now/60;cx.strokeStyle='rgba(120,200,255,.16)';cx.lineWidth=2;cx.beginPath();cx.arc(0,0,R*.55,0,7);cx.stroke();cx.setLineDash([]);cx.lineCap='round';cx.lineWidth=10;const P2=Math.PI;
  cx.strokeStyle=`rgba(255,59,107,${.6+.4*Math.sin(now/200)})`;cx.shadowColor='#f36';GAPS.forEach(a=>{cx.beginPath();cx.arc(0,0,R+5,a-GAPW,a+GAPW);cx.stroke()});cx.shadowBlur=0;
  for(let k=0;k<36;k++){const a=k*P2/18;if(GAPS.some(q=>Math.abs(angD(a,q))<GAPW+.05))continue;cx.fillStyle=`rgba(150,230,255,${.35+.35*Math.sin(now/300+k*.5)})`;cx.beginPath();cx.arc(Math.cos(a)*(R+18),Math.sin(a)*(R+18),2.5,0,7);cx.fill()}
  cx.globalCompositeOperation='lighter';
