@@ -215,7 +215,7 @@ const KM={' ':0,j:0,'1':0,k:1,'2':1,l:2,'3':2,u:3,'4':3};
 addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const k=e.key.length>1?e.key:e.key.toLowerCase();if(!key[k]&&k in KM)act(KM[k]);key[k]=1;if(k===' ')e.preventDefault()});
 addEventListener('keyup',e=>{key[e.key.length>1?e.key:e.key.toLowerCase()]=0});
 ['m0','m1','m2','m3'].forEach((id,i)=>$(id).addEventListener('pointerdown',e=>{e.stopPropagation();act(i)}));
-const cv=$('cv'),cx=cv.getContext('2d',{desynchronized:true}),stick=$('stick'),knob=$('knob');
+const cv=$('cv'),cx=cv.getContext('2d'),stick=$('stick'),knob=$('knob');
 cv.addEventListener('pointerdown',e=>{if(jid!==null)return;jid=e.pointerId;j0=[e.clientX,e.clientY];cv.setPointerCapture(jid);stick.style.display='block';stick.style.left=e.clientX+'px';stick.style.top=e.clientY+'px'});
 cv.addEventListener('pointermove',e=>{if(e.pointerId!==jid)return;let dx=(e.clientX-j0[0])/50,dy=(e.clientY-j0[1])/50;const l=Math.hypot(dx,dy);if(l>1){dx/=l;dy/=l}jx=dx;jy=dy;knob.style.transform=`translate(${dx*35}px,${dy*35}px)`});
 const up=e=>{if(e.pointerId!==jid)return;jid=null;jx=jy=0;stick.style.display='none'};
